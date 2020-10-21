@@ -20,6 +20,15 @@ export default function Home({ allPostsData }) {
           how AI can soon take over the world.
         </p>
       </section>
+      <section className={utilStyles.headingMd}>
+        <p>
+          Need to talk? Try{' '}
+          <Link href="/contact">
+            <a>here</a>
+          </Link>
+          .
+        </p>
+      </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
