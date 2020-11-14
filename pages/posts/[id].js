@@ -1,10 +1,9 @@
 import Head from 'next/head';
 
-import { getAllPostIds, getPostData } from '../../lib/posts';
-import Date from '../../components/date';
-import Layout from '../../components/layout';
+import { getAllPostIds, getPostData } from 'lib/posts';
+import { Layout, Date } from 'components';
 
-import utilStyles from '../../styles/utils.module.css';
+import utilStyles from 'styles/utils.module.css';
 
 function Post({ postData }) {
   return (

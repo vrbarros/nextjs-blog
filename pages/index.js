@@ -1,11 +1,11 @@
 import Head from 'next/head';
-
-import { getSortedPostsData } from '../lib/posts';
-import Layout, { siteTitle } from '../components/layout';
 import Link from 'next/link';
-import Date from '../components/date';
 
-import utilStyles from '../styles/utils.module.css';
+import { Layout, Date } from 'components';
+import { siteTitle } from 'components/Layout';
+
+import { getSortedPostsData } from 'lib/posts';
+import utilStyles from 'styles/utils.module.css';
 
 export default function Home({ allPostsData }) {
   return (
