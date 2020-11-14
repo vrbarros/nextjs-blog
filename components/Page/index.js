@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import DynamicComponent from './DynamicComponent';
 import SbEditable from 'storyblok-react';
+
+import DynamicComponent from '../DynamicComponent';
 
 const Page = ({ content }) => (
   <SbEditable content={content}>

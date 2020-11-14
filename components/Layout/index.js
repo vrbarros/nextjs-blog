@@ -5,6 +5,7 @@ import { Head, Navigation, Footer } from 'components';
 
 import styles from './index.module.css';
 import utilStyles from 'styles/utils.module.css';
+import StoryblokService from 'lib/storyblok-service';
 
 const name = 'Victor Barros';
 
@@ -55,6 +56,7 @@ function Layout(props) {
         )}
       </div>
       <Footer />
+      {StoryblokService.bridge()}
     </div>
   );
 }
