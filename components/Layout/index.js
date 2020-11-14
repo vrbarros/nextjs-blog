@@ -1,22 +1,17 @@
-import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 import { Head, Navigation, Footer } from 'components';
 
-import styles from './index.module.css';
-import utilStyles from 'styles/utils.module.css';
-import StoryblokService from 'lib/storyblok-service';
-
-const name = 'Victor Barros';
+import StoryblokService from 'utils/storyblok-service';
 
 function Layout(props) {
-  const { children, home } = props;
+  const { children, language } = props;
 
   return (
-    <div>
+    <div className="bg-gray-300">
       <Head />
-      <Navigation />
-      <div className={styles.container}>
+      <Navigation language={language} />
+      {/* <div className={styles.container}>
         <header className={styles.header}>
           {home ? (
             <>
@@ -46,7 +41,7 @@ function Layout(props) {
             </>
           )}
         </header>
-        <main>{children}</main>
+        <main></main>
         {!home && (
           <div className={styles.backToHome}>
             <Link href="/">
@@ -54,7 +49,8 @@ function Layout(props) {
             </Link>
           </div>
         )}
-      </div>
+      </div> */}
+      {children}
       <Footer />
       {StoryblokService.bridge()}
     </div>
@@ -63,7 +59,7 @@ function Layout(props) {
 
 Layout.propTypes = {
   children: PropTypes.any,
-  home: PropTypes.any
+  language: PropTypes.any
 };
 
 export default Layout;

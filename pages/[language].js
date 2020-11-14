@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
-import { Layout, Page } from 'components';
-
+import { Page, Layout } from 'components';
 import StoryblokService from 'utils/storyblok-service';
 
 class Home extends React.Component {
@@ -34,12 +32,12 @@ class Home extends React.Component {
   }
 
   render() {
-    const { content } = this.state.story;
+    const contentOfStory = this.state.story.content;
 
     return (
       <Layout language={this.state.language}>
         <div className="container mx-auto p-4 text-center">
-          <Page content={content} />
+          <Page content={contentOfStory} />
         </div>
       </Layout>
     );
@@ -47,8 +45,8 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  res: PropTypes.any,
-  language: PropTypes.any
+  res: PropTypes.object,
+  language: PropTypes.object
 };
 
 export default Home;

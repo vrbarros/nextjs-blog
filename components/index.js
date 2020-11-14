@@ -9,3 +9,6 @@ export { default as Navigation } from './Navigation';
 export { default as Page } from './Page';
 export { default as Teaser } from './Teaser';
 export { default as Placeholder } from './Placeholder';
+export { default as DynamicIcon } from './DynamicIcon';
+export { default as BlogPost } from './BlogPost';
+export { default as FeaturedPosts } from './FeaturedPosts';

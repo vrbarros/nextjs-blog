@@ -1,6 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-function Navigation() {
+function Navigation(props) {
+  const { language } = props;
+
   return (
     <header className="w-full bg-white">
       <nav className="" role="navigation">
@@ -42,8 +45,8 @@ function Navigation() {
                 </a>
               </li>
               <li>
-                <a href="/" className="block px-4 py-1 md:p-2 lg:px-8">
-                  About
+                <a href={`/${language}/blog`} className="block px-4 py-1 md:p-2 lg:px-8">
+                  Blog
                 </a>
               </li>
             </ul>
@@ -51,13 +54,17 @@ function Navigation() {
               <li>
                 <a
                   href="/"
-                  className="block px-4 py-1 md:p-2 rounded-lg lg:px-4 bg-black text-white">
+                  className={`block px-4 py-1 md:p-2 rounded-lg lg:px-4 
+              ${language === 'en' ? 'bg-black text-white' : ''}`}>
                   EN
                 </a>
               </li>
               <li>
-                <a href="/de" className="block px-4 py-1 md:p-2 rounded-lg lg:px-4">
-                  DE
+                <a
+                  href="/pt-br"
+                  className={`block px-4 py-1 md:p-2 rounded-lg lg:px-4 
+              ${language === 'pt-br' ? 'bg-black text-white' : ''}`}>
+                  PT-BR
                 </a>
               </li>
             </ul>
@@ -68,6 +75,8 @@ function Navigation() {
   );
 }
 
-Navigation.propTypes = {};
+Navigation.propTypes = {
+  language: PropTypes.any
+};
 
 export default Navigation;

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 
-import 'styles/global.css';
 import 'styles/tailwind.css';
 
 function App(props) {
