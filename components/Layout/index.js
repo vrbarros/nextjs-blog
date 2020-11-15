@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import StoryblokService from '@app/utils/storyblok-service';
 
 function Layout(props) {
-  const { children, language } = props;
+  const { children } = props;
 
   return (
     <div className="bg-gray-300">
       <Head />
-      <Navigation language={language} />
+      <Navigation />
       {/* <div className={styles.container}>
         <header className={styles.header}>
           {home ? (
@@ -56,8 +56,7 @@ function Layout(props) {
 }
 
 Layout.propTypes = {
-  children: PropTypes.any,
-  language: PropTypes.any
+  children: PropTypes.any
 };
 
 export default Layout;

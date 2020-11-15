@@ -1,19 +1,16 @@
 import { Layout, Storyblok } from '@app/components';
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
-import StoryblokService from '@app/utils/storyblok-service';
+import React from 'react';
+import StoryblokService, { useStoryblok } from '@app/utils/storyblok-service';
 
 function Home(props) {
-  const { story: initialStory, language } = props;
+  const { story: initialStory } = props;
 
-  const [story, setStory] = useState(initialStory);
-
-  useEffect(() => {
-    StoryblokService.initNewEditor(story, setStory);
-  }, []);
+  // Hooks
+  const { story } = useStoryblok({ initialStory });
 
   return (
-    <Layout language={language}>
+    <Layout>
       <div className="container mx-auto p-4 text-center">
         <Storyblok.Page content={story.content} />
       </div>
@@ -21,19 +18,19 @@ function Home(props) {
   );
 }
 
-export async function getServerSideProps({ params }) {
-  let language = params?.language || 'en';
-  let insertLanguage = language !== 'en' ? `/${language}` : '';
-  let res = await StoryblokService.get(`cdn/stories${insertLanguage}/home`, {
+export async function getServerSideProps({ locale, defaultLocale }) {
+  const language = locale || defaultLocale;
+  const insertLanguage = language !== defaultLocale ? `/${language}` : '';
+
+  const res = await StoryblokService.get(`cdn/stories${insertLanguage}/home`, {
     resolve_relations: 'featured-posts.posts'
   });
 
-  return { props: { story: res.data.story, language } };
+  return { props: { story: res.data.story } };
 }
 
 Home.propTypes = {
-  story: PropTypes.any,
-  language: PropTypes.any
+  story: PropTypes.any
 };
 
 export default Home;

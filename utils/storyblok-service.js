@@ -1,5 +1,7 @@
 import StoryblokClient from 'storyblok-js-client';
 
+import { useState, useEffect } from 'react';
+
 class StoryblokService {
   constructor() {
     this.devMode = true; // Always loads draft
@@ -61,7 +63,9 @@ class StoryblokService {
     }
   }
 
-  initNewEditor(story, setStory) {
+  initNewEditor(currentState) {
+    const [story, setStory] = currentState;
+
     if (window.storyblok) {
       window.storyblok.init();
 
@@ -106,5 +110,15 @@ class StoryblokService {
 }
 
 const storyblokInstance = new StoryblokService();
+
+export function useStoryblok({ initialStory }) {
+  const [story, setStory] = useState(initialStory);
+
+  useEffect(() => {
+    storyblokInstance.initNewEditor([story, setStory]);
+  }, []);
+
+  return { story };
+}
 
 export default storyblokInstance;
