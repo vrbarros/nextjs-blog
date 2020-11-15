@@ -1,16 +1,18 @@
 import { Teaser, Feature, Grid, Placeholder, FeaturedPosts } from 'components';
 import PropTypes from 'prop-types';
 
-const Components = {
-  teaser: Teaser,
-  grid: Grid,
-  feature: Feature,
-  'featured-posts': FeaturedPosts
-};
-
 function DynamicComponent({ blok }) {
+  const Components = {
+    teaser: Teaser,
+    grid: Grid,
+    feature: Feature,
+    'featured-posts': FeaturedPosts
+  };
+
   if (Components[blok.component]) {
     const Component = Components[blok.component];
+
+    console.log(blok);
 
     return <Component blok={blok} />;
   }
