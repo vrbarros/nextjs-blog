@@ -13,7 +13,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    minHeight: 64
   },
   avatar: {
     marginRight: theme.spacing(2),
@@ -58,7 +59,7 @@ function Navigation() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
           <Link href="/" locale={locale} underline="none">
             <Avatar className={classes.avatar}>
