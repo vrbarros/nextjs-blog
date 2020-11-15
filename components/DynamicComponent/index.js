@@ -12,8 +12,6 @@ function DynamicComponent({ blok }) {
   if (Components[blok.component]) {
     const Component = Components[blok.component];
 
-    console.log(blok);
-
     return <Component blok={blok} />;
   }
 
