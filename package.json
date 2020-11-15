@@ -20,7 +20,16 @@
     ]
   },
   "dependencies": {
+    "@emotion/cache": "^11.0.0",
+    "@emotion/core": "^11.0.0",
+    "@emotion/css": "^11.0.0",
+    "@emotion/react": "^11.0.0",
+    "@emotion/server": "^11.0.0",
+    "@emotion/styled": "^11.0.0",
+    "@material-ui/core": "^5.0.0-alpha.16",
+    "@material-ui/icons": "^4.9.1",
     "axios": "^0.21.0",
+    "clsx": "^1.1.1",
     "date-fns": "^2.16.1",
     "gray-matter": "^4.0.2",
     "next": "^10.0.1",
@@ -42,8 +51,6 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.5.1",
-    "postcss-preset-env": "^6.7.0",
-    "prettier": "^2.1.2",
-    "tailwindcss": "^1.9.6"
+    "prettier": "^2.1.2"
   }
 }
