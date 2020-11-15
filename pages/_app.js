@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import 'styles/tailwind.css';
+import '@app/styles/tailwind.css';
 
 function App(props) {
   const { Component, pageProps } = props;

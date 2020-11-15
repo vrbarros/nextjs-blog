@@ -1,9 +1,7 @@
+import { Layout, Storyblok } from '@app/components';
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
-
-import { Layout, Page } from 'components';
-
-import StoryblokService from 'utils/storyblok-service';
+import StoryblokService from '@app/utils/storyblok-service';
 
 function Home(props) {
   const { story: initialStory, language } = props;
@@ -17,13 +15,13 @@ function Home(props) {
   return (
     <Layout language={language}>
       <div className="container mx-auto p-4 text-center">
-        <Page content={story.content} />
+        <Storyblok.Page content={story.content} />
       </div>
     </Layout>
   );
 }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
   let language = params?.language || 'en';
   let insertLanguage = language !== 'en' ? `/${language}` : '';
   let res = await StoryblokService.get(`cdn/stories${insertLanguage}/home`, {

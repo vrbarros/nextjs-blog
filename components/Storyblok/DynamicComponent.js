@@ -1,12 +1,12 @@
-import { Teaser, Feature, Grid, Placeholder, FeaturedPosts } from 'components';
+import { Storyblok } from '@app/components';
 import PropTypes from 'prop-types';
 
 function DynamicComponent({ blok }) {
   const Components = {
-    teaser: Teaser,
-    grid: Grid,
-    feature: Feature,
-    'featured-posts': FeaturedPosts
+    teaser: Storyblok.Teaser,
+    grid: Storyblok.Grid,
+    feature: Storyblok.Feature,
+    'featured-posts': Storyblok.FeaturedPosts
   };
 
   if (Components[blok.component]) {
@@ -15,7 +15,7 @@ function DynamicComponent({ blok }) {
     return <Component blok={blok} />;
   }
 
-  return <Placeholder componentName={blok.component} />;
+  return <Storyblok.Placeholder componentName={blok.component} />;
 }
 
 DynamicComponent.propTypes = {

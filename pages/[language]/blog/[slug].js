@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Layout, BlogPost } from 'components';
-import StoryblokService from 'utils/storyblok-service';
+import { Layout, Storyblok } from '@app/components';
+import StoryblokService from '@app/utils/storyblok-service';
 
 class Blog extends React.Component {
   constructor(props) {
@@ -35,7 +35,7 @@ class Blog extends React.Component {
 
     return (
       <Layout language={this.state.language}>
-        <BlogPost blok={contentOfStory} />
+        <Storyblok.BlogPost blok={contentOfStory} />
       </Layout>
     );
   }

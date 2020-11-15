@@ -1,4 +1,3 @@
-import React from 'react';
 import SbEditable from 'storyblok-react';
 import { render } from 'storyblok-rich-text-react-renderer';
 import PropTypes from 'prop-types';

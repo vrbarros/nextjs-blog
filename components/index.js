@@ -1,14 +1,9 @@
+import * as Storyblok from './Storyblok';
+
 export { default as Date } from './Date';
-export { default as DynamicComponent } from './DynamicComponent';
-export { default as Feature } from './Feature';
 export { default as Footer } from './Footer';
-export { default as Grid } from './Grid';
 export { default as Head } from './Head';
 export { default as Layout } from './Layout';
 export { default as Navigation } from './Navigation';
-export { default as Page } from './Page';
-export { default as Teaser } from './Teaser';
-export { default as Placeholder } from './Placeholder';
-export { default as DynamicIcon } from './DynamicIcon';
-export { default as BlogPost } from './BlogPost';
-export { default as FeaturedPosts } from './FeaturedPosts';
+
+export { Storyblok };

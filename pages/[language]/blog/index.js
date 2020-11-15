@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Layout } from 'components';
-import StoryblokService from 'utils/storyblok-service';
+import { Layout } from '@app/components';
+import StoryblokService from '@app/utils/storyblok-service';
 
 class Blog extends React.Component {
   constructor(props) {

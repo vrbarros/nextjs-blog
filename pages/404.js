@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { Layout } from 'components';
+import { Layout } from '@app/components';
 
 function Custom404() {
   return (

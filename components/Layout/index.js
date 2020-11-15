@@ -1,8 +1,6 @@
+import { Head, Navigation, Footer } from '@app/components';
 import PropTypes from 'prop-types';
-
-import { Head, Navigation, Footer } from 'components';
-
-import StoryblokService from 'utils/storyblok-service';
+import StoryblokService from '@app/utils/storyblok-service';
 
 function Layout(props) {
   const { children, language } = props;
