@@ -1,7 +1,8 @@
-import { Layout, Storyblok } from '@app/components';
+import { Layout, Storyblok, Head } from '@app/components';
 import PropTypes from 'prop-types';
 import React from 'react';
 import StoryblokService, { useStoryblok } from '@app/utils/storyblok-service';
+import Container from '@material-ui/core/Container';
 
 function Home(props) {
   const { story: initialStory } = props;
@@ -11,9 +12,10 @@ function Home(props) {
 
   return (
     <Layout>
-      <div className="container mx-auto p-4 text-center">
+      <Head title="Home | victorbarros.com" />
+      <Container maxWidth="lg">
         <Storyblok.Page content={story.content} />
-      </div>
+      </Container>
     </Layout>
   );
 }

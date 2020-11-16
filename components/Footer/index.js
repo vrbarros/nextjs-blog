@@ -13,12 +13,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Footer() {
+  // Hooks
   const classes = useStyles();
 
   return (
     <footer className={classes.footer}>
       <Container maxWidth="lg">
-        <Box mb={4}>
+        <Box sx={{ m: 2 }}>
           <Divider />
         </Box>
         <Typography variant="body2" color="textSecondary" align="center">

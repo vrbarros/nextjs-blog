@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Layout, Storyblok } from '@app/components';
+import { Layout, Storyblok, Head } from '@app/components';
 import StoryblokService, { useStoryblok } from '@app/utils/storyblok-service';
+import Container from '@material-ui/core/Container';
 
 function Post(props) {
   const { story: initialStory } = props;
@@ -11,7 +12,10 @@ function Post(props) {
 
   return (
     <Layout>
-      <Storyblok.BlogPost blok={story.content} />
+      <Head title={story.content.title} description={story.content.intro} />
+      <Container maxWidth="md">
+        <Storyblok.BlogPost blok={story.content} />
+      </Container>
     </Layout>
   );
 }

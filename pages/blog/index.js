@@ -1,51 +1,96 @@
-import { Layout } from '@app/components';
+import { Layout, Link } from '@app/components';
 import PropTypes from 'prop-types';
 import React from 'react';
 import StoryblokService, { useStoryblok } from '@app/utils/storyblok-service';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import Box from '@material-ui/core/Box';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() => ({
+  media: {
+    height: 0,
+    paddingTop: '56.25%' // 16:9
+  },
+  actions: {
+    justifyContent: 'space-between'
+  }
+}));
 
 function Blog(props) {
   const { story: initialStory } = props;
 
   // Hooks
+  const classes = useStyles();
   const { story: posts } = useStoryblok({ initialStory });
   const { locale } = useRouter();
 
   return (
     <Layout>
-      <main className="container mx-auto">
-        <h1 className="text-5xl font-bold font-serif text-primary tracking-wide pt-12">
-          All Posts
-        </h1>
-        <ul>
+      <Container maxWidth="lg">
+        <Box sx={{ mb: 2, mt: 2 }}>
+          <Typography variant="h5" component="div">
+            All Posts
+          </Typography>
+        </Box>
+        <Grid container spacing={2}>
           {posts.map((post) => (
-            <li key={post._uid} className="max-w-4xl px-10 my-4 py-6 rounded-lg shadow-md bg-white">
-              <div className="flex justify-between items-center">
-                <span className="font-light text-gray-600">
-                  {`
-                    ${new Date(post.created_at).getDay()}.
-                    ${new Date(post.created_at).getMonth()}.
-                    ${new Date(post.created_at).getFullYear()}`}
-                </span>
-              </div>
-              <div className="mt-2">
-                <Link href={`/blog/${post.slug}`} locale={locale}>
-                  <a className="text-2xl text-gray-700 font-bold hover:text-gray-600">
-                    {post.content.title}
-                  </a>
-                </Link>
-                <p className="mt-2 text-gray-600">{post.content.intro}</p>
-              </div>
-              <div className="flex justify-between items-center mt-4">
-                <Link href={`/blog/${post.slug}`} locale={locale}>
-                  <a className="text-blue-600 hover:underline">Read more</a>
-                </Link>
-              </div>
-            </li>
+            <Grid item key={post._uid} md={4} sm={6} xs={12}>
+              <Card>
+                <CardHeader
+                  action={
+                    <IconButton aria-label="settings">
+                      <MoreVertIcon />
+                    </IconButton>
+                  }
+                  title={post.content.title}
+                  subheader="20/11/2020"
+                />
+                <CardMedia
+                  className={classes.media}
+                  image={post.content?.image}
+                  title={post.content.title}
+                />
+                <CardContent>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    {post.content.intro}
+                  </Typography>
+                </CardContent>
+                <CardActions disableSpacing className={classes.actions}>
+                  <Button
+                    size="small"
+                    href={`/blog/${post.slug}`}
+                    locale={locale}
+                    component={Link}
+                    naked>
+                    Learn More
+                  </Button>
+                  <div>
+                    <IconButton aria-label="add to favorites">
+                      <FavoriteIcon />
+                    </IconButton>
+                    <IconButton aria-label="share">
+                      <ShareIcon />
+                    </IconButton>
+                  </div>
+                </CardActions>
+              </Card>
+            </Grid>
           ))}
-        </ul>
-      </main>
+        </Grid>
+      </Container>
     </Layout>
   );
 }
