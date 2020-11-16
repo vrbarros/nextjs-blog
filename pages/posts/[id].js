@@ -1,34 +1,36 @@
 import Head from 'next/head';
+import PropTypes from 'prop-types';
 
-import { getAllPostIds, getPostData } from '../../lib/posts';
-import Date from '../../components/date';
-import Layout from '../../components/layout';
+import { getAllPostIds, getPostData } from 'lib/posts';
+import { Layout, Date } from 'components';
 
-import utilStyles from '../../styles/utils.module.css';
+function Post(props) {
+  const { postData } = props;
 
-function Post({ postData }) {
   return (
     <Layout>
       <Head>
         <title>{postData.title}</title>
       </Head>
       <article>
-        <h1 className={utilStyles.headingXl}>{postData.title}</h1>
-        <div className={utilStyles.lightText}>
-          <Date dateString={postData.date} />
-        </div>
+        {postData.title}
+        <Date dateString={postData.date} />
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
   );
 }
 
+Post.propTypes = {
+  postData: PropTypes.object
+};
+
 export async function getStaticPaths() {
   const paths = getAllPostIds();
 
   return {
     paths,
-    fallback: false,
+    fallback: false
   };
 }
 
@@ -37,8 +39,8 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      postData,
-    },
+      postData
+    }
   };
 }
 

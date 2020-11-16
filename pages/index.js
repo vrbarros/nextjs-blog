@@ -1,47 +1,38 @@
-import Head from 'next/head';
+import { Layout, Storyblok, Head } from '@app/components';
+import PropTypes from 'prop-types';
+import React from 'react';
+import StoryblokService, { useStoryblok } from '@app/utils/storyblok-service';
+import Container from '@material-ui/core/Container';
 
-import { getSortedPostsData } from '../lib/posts';
-import Layout, { siteTitle } from '../components/layout';
-import Link from 'next/link';
-import Date from '../components/date';
+function Home(props) {
+  const { story: initialStory } = props;
 
-import utilStyles from '../styles/utils.module.css';
+  // Hooks
+  const { story } = useStoryblok({ initialStory });
 
-export default function Home({ allPostsData }) {
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <section className={utilStyles.headingMd}>
-        <p>
-          Entrepreneur, geek, marathon runner, and hobbies from how to get a
-          recipe for tomato sauce, nature, space exploration as understanding
-          how AI can soon take over the world.
-        </p>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
-      </section>
+    <Layout>
+      <Head title="Home | victorbarros.com" />
+      <Container maxWidth="lg">
+        <Storyblok.Page content={story.content} />
+      </Container>
     </Layout>
   );
 }
 
-export async function getStaticProps() {
-  const allPostsData = getSortedPostsData();
+export async function getServerSideProps({ locale, defaultLocale }) {
+  const language = locale || defaultLocale;
+  const insertLanguage = language !== defaultLocale ? `/${language}` : '';
 
-  return { props: { allPostsData } };
+  const res = await StoryblokService.get(`cdn/stories${insertLanguage}/home`, {
+    resolve_relations: 'featured-posts.posts'
+  });
+
+  return { props: { story: res.data.story } };
 }
+
+Home.propTypes = {
+  story: PropTypes.any
+};
+
+export default Home;
