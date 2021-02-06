@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { makeStyles } from '@material-ui/core/styles';
 import { useRouter } from 'next/router';
 import Button from '@material-ui/core/Button';
@@ -9,16 +10,17 @@ import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import SbEditable from 'storyblok-react';
 import Typography from '@material-ui/core/Typography';
-import { Link } from '@app/components';
 
-const useStyles = makeStyles((theme) => ({
+import Link from '@/components/Link';
+
+const useStyles = makeStyles(theme => ({
   root: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1),
   },
   media: {
-    height: 140
-  }
+    height: 140,
+  },
 }));
 
 function FeaturedPosts({ blok }) {
@@ -34,7 +36,7 @@ function FeaturedPosts({ blok }) {
             {blok.title}
           </Typography>
         </Grid>
-        {blok.posts.map((post) => (
+        {blok.posts.map(post => (
           <Grid item key={post.content?._uid} lg={3} md={4} sm={6} xs={12}>
             <Card>
               <CardMedia
@@ -69,7 +71,7 @@ function FeaturedPosts({ blok }) {
 }
 
 FeaturedPosts.propTypes = {
-  blok: PropTypes.object
+  blok: PropTypes.object,
 };
 
 export default FeaturedPosts;

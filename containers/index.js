@@ -1,1 +1,2 @@
-export { default as Theme } from './Theme';
+export { default as MaterialUIProvider } from './MaterialUIProvider';
+export { default as SWRProvider } from './SWRProvider';

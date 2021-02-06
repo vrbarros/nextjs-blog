@@ -1,7 +1,5 @@
-import { Layout, Link } from '@app/components';
 import PropTypes from 'prop-types';
 import React from 'react';
-import StoryblokService, { useStoryblok } from '@app/utils/storyblok-service';
 import { useRouter } from 'next/router';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -19,14 +17,18 @@ import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { makeStyles } from '@material-ui/core/styles';
 
+import { Link } from '@/components';
+import StoryblokService, { useStoryblok } from '@/utils/storyblok-service';
+import MainLayout from '@/layouts/MainLayout';
+
 const useStyles = makeStyles(() => ({
   media: {
     height: 0,
-    paddingTop: '56.25%' // 16:9
+    paddingTop: '56.25%', // 16:9
   },
   actions: {
-    justifyContent: 'space-between'
-  }
+    justifyContent: 'space-between',
+  },
 }));
 
 function Blog(props) {
@@ -38,60 +40,59 @@ function Blog(props) {
   const { locale } = useRouter();
 
   return (
-    <Layout>
-      <Container maxWidth="lg">
-        <Box sx={{ mb: 2, mt: 2 }}>
-          <Typography variant="h5" component="div">
-            All Posts
-          </Typography>
-        </Box>
-        <Grid container spacing={2}>
-          {posts.map((post) => (
-            <Grid item key={post._uid} md={4} sm={6} xs={12}>
-              <Card>
-                <CardHeader
-                  action={
-                    <IconButton aria-label="settings">
-                      <MoreVertIcon />
-                    </IconButton>
-                  }
-                  title={post.content.title}
-                  subheader="20/11/2020"
-                />
-                <CardMedia
-                  className={classes.media}
-                  image={post.content?.image}
-                  title={post.content.title}
-                />
-                <CardContent>
-                  <Typography variant="body2" color="textSecondary" component="p">
-                    {post.content.intro}
-                  </Typography>
-                </CardContent>
-                <CardActions disableSpacing className={classes.actions}>
-                  <Button
-                    size="small"
-                    href={`/blog/${post.slug}`}
-                    locale={locale}
-                    component={Link}
-                    naked>
-                    Learn More
-                  </Button>
-                  <div>
-                    <IconButton aria-label="add to favorites">
-                      <FavoriteIcon />
-                    </IconButton>
-                    <IconButton aria-label="share">
-                      <ShareIcon />
-                    </IconButton>
-                  </div>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </Layout>
+    <Container maxWidth="lg">
+      <Box sx={{ mb: 2, mt: 2 }}>
+        <Typography variant="h5" component="div">
+          All Posts
+        </Typography>
+      </Box>
+      <Grid container spacing={2}>
+        {posts.map(post => (
+          // eslint-disable-next-line no-underscore-dangle
+          <Grid item key={post._uid} md={4} sm={6} xs={12}>
+            <Card>
+              <CardHeader
+                action={
+                  <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title={post.content.title}
+                subheader="20/11/2020"
+              />
+              <CardMedia
+                className={classes.media}
+                image={post.content?.image}
+                title={post.content.title}
+              />
+              <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {post.content.intro}
+                </Typography>
+              </CardContent>
+              <CardActions disableSpacing className={classes.actions}>
+                <Button
+                  size="small"
+                  href={`/blog/${post.slug}`}
+                  locale={locale}
+                  component={Link}
+                  naked>
+                  Learn More
+                </Button>
+                <div>
+                  <IconButton aria-label="add to favorites">
+                    <FavoriteIcon />
+                  </IconButton>
+                  <IconButton aria-label="share">
+                    <ShareIcon />
+                  </IconButton>
+                </div>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
 }
 
@@ -105,7 +106,9 @@ export async function getServerSideProps({ locale, defaultLocale }) {
 }
 
 Blog.propTypes = {
-  story: PropTypes.any
+  story: PropTypes.any,
 };
+
+Blog.Layout = MainLayout;
 
 export default Blog;

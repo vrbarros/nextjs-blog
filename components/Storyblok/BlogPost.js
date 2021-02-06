@@ -4,29 +4,30 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, CardMedia } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   media: {
     height: 0,
     paddingTop: '56.25%', // 16:9
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   content: {
     '& img': {
-      maxWidth: '100%'
+      maxWidth: '100%',
     },
     '& p': {
-      fontSize: theme.typography.body1.fontSize
+      fontSize: theme.typography.body1.fontSize,
     },
     '& h3': {
-      fontSize: theme.typography.h3.fontSize
-    }
-  }
+      fontSize: theme.typography.h3.fontSize,
+    },
+  },
 }));
 
 function BlogPost({ blok }) {
   const classes = useStyles();
 
   return (
+    // eslint-disable-next-line no-underscore-dangle
     <SbEditable content={blok} key={blok._uid}>
       <CardMedia className={classes.media} image={blok.image} title={blok.title} />
       <Typography variant="h2" gutterBottom>
@@ -41,7 +42,7 @@ function BlogPost({ blok }) {
 }
 
 BlogPost.propTypes = {
-  blok: PropTypes.object
+  blok: PropTypes.object,
 };
 
 export default BlogPost;

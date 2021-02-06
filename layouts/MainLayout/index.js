@@ -1,37 +1,38 @@
-import { Navigation, Footer } from '@app/components';
+import { Navigation, Footer } from '@/components';
 import PropTypes from 'prop-types';
-import StoryblokService from '@app/utils/storyblok-service';
+import StoryblokService from '@/utils/storyblok-service';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '100vh'
-  }
+    minHeight: '100vh',
+    marginTop: theme.spacing(2),
+  },
 }));
 
-function Layout(props) {
+function MainLayout(props) {
   const { children } = props;
 
   // Hooks
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <>
       <Navigation />
       <div className={classes.root}>
         {children}
         <Footer />
       </div>
       {StoryblokService.bridge()}
-    </React.Fragment>
+    </>
   );
 }
 
-Layout.propTypes = {
-  children: PropTypes.any
+MainLayout.propTypes = {
+  children: PropTypes.any,
 };
 
-export default Layout;
+export default MainLayout;

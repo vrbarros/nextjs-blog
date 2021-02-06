@@ -6,28 +6,29 @@ import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
-import { Link } from '@app/components';
 import { useState } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
-const useStyles = makeStyles((theme) => ({
+import Link from '@/components/Link';
+
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    minHeight: 64
+    minHeight: 64,
   },
   avatar: {
     marginRight: theme.spacing(2),
-    backgroundColor: theme.palette.background.default,
-    color: theme.palette.primary.main
+    backgroundColor: `${theme.palette.background.default} !important`,
+    color: `${theme.palette.primary.main} !important`,
   },
   title: {
     flexGrow: 1,
-    color: theme.palette.primary.contrastText
+    color: theme.palette.primary.contrastText,
   },
   button: {
-    marginRight: theme.spacing(1)
-  }
+    marginRight: theme.spacing(1),
+  },
 }));
 
 function Navigation() {
@@ -39,7 +40,7 @@ function Navigation() {
   const [anchorEl, setAnchorEl] = useState(null);
 
   // Actions
-  const handleClick = (event) => {
+  const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -50,11 +51,11 @@ function Navigation() {
   // Constants
   const localesOptions = {
     en: {
-      label: 'English'
+      label: 'English',
     },
     'pt-br': {
-      label: 'Português'
-    }
+      label: 'Português',
+    },
   };
 
   return (
@@ -105,7 +106,7 @@ function Navigation() {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}>
-        {locales.map((key) => (
+        {locales.map(key => (
           <MenuItem key={key} component="a" href={`/${key}`}>
             {localesOptions[key]?.label}
           </MenuItem>

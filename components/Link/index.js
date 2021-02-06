@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import MuiLink from '@material-ui/core/Link';
 
-const NextComposed = React.forwardRef(function NextComposed(props, ref) {
+const NextComposed = React.forwardRef((props, ref) => {
   // eslint-disable-next-line react/prop-types
   const { as, href, replace, scroll, passHref, shallow, prefetch, ...other } = props;
 
@@ -39,7 +39,7 @@ function Link(props) {
   const router = useRouter();
   const pathname = typeof href === 'string' ? href : href.pathname;
   const className = clsx(classNameProps, {
-    [activeClassName]: router.pathname === pathname && activeClassName
+    [activeClassName]: router.pathname === pathname && activeClassName,
   });
 
   if (naked) {
@@ -59,7 +59,7 @@ Link.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
   naked: PropTypes.bool,
   onClick: PropTypes.func,
-  prefetch: PropTypes.bool
+  prefetch: PropTypes.bool,
 };
 
 // eslint-disable-next-line react/display-name

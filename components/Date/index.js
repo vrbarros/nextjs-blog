@@ -10,5 +10,5 @@ export default function Date(props) {
 }
 
 Date.propTypes = {
-  dateString: PropTypes.any
+  dateString: PropTypes.any,
 };

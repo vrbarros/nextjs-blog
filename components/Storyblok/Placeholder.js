@@ -9,7 +9,7 @@ const Placeholder = ({ componentName }) => (
 );
 
 Placeholder.propTypes = {
-  componentName: PropTypes.any
+  componentName: PropTypes.any,
 };
 
 export default Placeholder;

@@ -1,12 +1,20 @@
-import { Storyblok } from '@app/components';
 import PropTypes from 'prop-types';
+
+import Placeholder from '@/components/Storyblok/Placeholder';
+import Teaser from '@/components/Storyblok/Teaser';
+import Feature from '@/components/Storyblok/Feature';
+// eslint-disable-next-line import/no-cycle
+import Grid from '@/components/Storyblok/Grid';
+import FeaturedPosts from '@/components/Storyblok/FeaturedPosts';
+import MediumArticles from '@/components/Storyblok/MediumArticles';
 
 function DynamicComponent({ blok }) {
   const Components = {
-    teaser: Storyblok.Teaser,
-    grid: Storyblok.Grid,
-    feature: Storyblok.Feature,
-    'featured-posts': Storyblok.FeaturedPosts
+    teaser: Teaser,
+    grid: Grid,
+    feature: Feature,
+    'featured-posts': FeaturedPosts,
+    'medium-articles': MediumArticles,
   };
 
   if (Components[blok.component]) {
@@ -15,11 +23,11 @@ function DynamicComponent({ blok }) {
     return <Component blok={blok} />;
   }
 
-  return <Storyblok.Placeholder componentName={blok.component} />;
+  return <Placeholder componentName={blok.component} />;
 }
 
 DynamicComponent.propTypes = {
-  blok: PropTypes.object
+  blok: PropTypes.object,
 };
 
 export default DynamicComponent;
