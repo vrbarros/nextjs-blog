@@ -1,0 +1,13 @@
+{
+  "types": [
+    { "type": "feat", "section": ":sparkles: Funcionalidades" },
+    { "type": "fix", "section": ":nut_and_bolt: Correções" },
+    { "type": "chore", "hidden": true },
+    { "type": "docs", "section": ":blue_book: Documentação" },
+    { "type": "style", "hidden": ":lipstick: Interface/Usabilidade" },
+    { "type": "refactor", "section": ":lollipop: Refatorações" },
+    { "type": "perf", "section": ":steam_locomotive: Performance" },
+    { "type": "test", "hidden": true }
+  ],
+  "releaseCommitMessageFormat": "chore(release): {{currentTag}} [release]"
+}
