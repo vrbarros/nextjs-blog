@@ -1,3 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-param-reassign */
 import StoryblokClient from 'storyblok-js-client';
 
 import { useState, useEffect } from 'react';
@@ -10,8 +14,8 @@ class StoryblokService {
       accessToken: this.token,
       cache: {
         clear: 'auto',
-        type: 'memory'
-      }
+        type: 'memory',
+      },
     });
 
     this.query = {};
@@ -50,12 +54,12 @@ class StoryblokService {
 
       // Update state.story on input in Visual Editor
       // this will alter the state and replaces the current story with a current raw story object and resolve relations
-      window.storyblok.on('input', (event) => {
+      window.storyblok.on('input', event => {
         if (event.story.content._uid === reactComponent.state.story.content._uid) {
           event.story.content = window.storyblok.addComments(event.story.content, event.story.id);
           window.storyblok.resolveRelations(event.story, ['featured-articles.articles'], () => {
             reactComponent.setState({
-              story: event.story
+              story: event.story,
             });
           });
         }
@@ -74,7 +78,7 @@ class StoryblokService {
 
       // Update state.story on input in Visual Editor
       // this will alter the state and replaces the current story with a current raw story object and resolve relations
-      window.storyblok.on('input', (event) => {
+      window.storyblok.on('input', event => {
         if (event.story.content._uid === story.content._uid) {
           event.story.content = window.storyblok.addComments(event.story.content, event.story.id);
           window.storyblok.resolveRelations(
@@ -82,7 +86,7 @@ class StoryblokService {
             ['featured-articles.articles', 'featured-posts.posts'],
             () => {
               setStory(event.story);
-            }
+            },
           );
         }
       });
@@ -103,7 +107,7 @@ class StoryblokService {
     }
     return (
       <script
-        src={'//app.storyblok.com/f/storyblok-latest.js?t=' + this.token}
+        src={`//app.storyblok.com/f/storyblok-latest.js?t=${this.token}`}
         type="text/javascript"></script>
     );
   }

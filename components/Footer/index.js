@@ -5,11 +5,11 @@ import Link from '@material-ui/core/Link';
 import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   footer: {
     padding: theme.spacing(3, 2),
-    marginTop: 'auto'
-  }
+    marginTop: 'auto',
+  },
 }));
 
 function Footer() {

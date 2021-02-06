@@ -1,14 +1,16 @@
-import { Storyblok } from '@app/components';
 import PropTypes from 'prop-types';
 import SbEditable from 'storyblok-react';
 import MuiGrid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
+// eslint-disable-next-line import/no-cycle
+import DynamicComponent from '@/components/Storyblok/DynamicComponent';
+
+const useStyles = makeStyles(theme => ({
   root: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1)
-  }
+    marginBottom: theme.spacing(1),
+  },
 }));
 
 function Grid({ blok }) {
@@ -18,9 +20,10 @@ function Grid({ blok }) {
   return (
     <SbEditable content={blok}>
       <MuiGrid container spacing={2} className={classes.root}>
-        {blok.columns.map((nestedBlok) => (
+        {blok.columns.map(nestedBlok => (
+          // eslint-disable-next-line no-underscore-dangle
           <MuiGrid item key={nestedBlok._uid} lg={3} md={4} sm={6} xs={12}>
-            <Storyblok.DynamicComponent blok={nestedBlok} />
+            <DynamicComponent blok={nestedBlok} />
           </MuiGrid>
         ))}
       </MuiGrid>
@@ -29,7 +32,7 @@ function Grid({ blok }) {
 }
 
 Grid.propTypes = {
-  blok: PropTypes.object
+  blok: PropTypes.object,
 };
 
 export default Grid;

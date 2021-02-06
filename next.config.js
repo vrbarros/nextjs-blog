@@ -2,9 +2,9 @@ module.exports = {
   i18n: {
     locales: ['en', 'pt-br'],
     defaultLocale: 'en',
-    localeDetection: false
+    localeDetection: false,
   },
   images: {
-    domains: ['assets.vercel.com', 'a.storyblok.com']
-  }
+    domains: ['assets.vercel.com', 'a.storyblok.com'],
+  },
 };

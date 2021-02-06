@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#f44336'
+      main: '#f44336',
     },
     secondary: {
-      main: '#0d47a1'
-    }
-  }
+      main: '#0d47a1',
+    },
+  },
 });
 
 function Theme(props) {
@@ -19,7 +19,7 @@ function Theme(props) {
 }
 
 Theme.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
 };
 
 export default Theme;

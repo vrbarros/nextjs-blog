@@ -1,8 +1,9 @@
+/* eslint-disable react/no-danger */
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 
-import { getAllPostIds, getPostData } from 'lib/posts';
-import { Layout, Date } from 'components';
+import { getAllPostIds, getPostData } from '@/lib/posts';
+import { Layout, Date } from '@/components';
 
 function Post(props) {
   const { postData } = props;
@@ -22,7 +23,7 @@ function Post(props) {
 }
 
 Post.propTypes = {
-  postData: PropTypes.object
+  postData: PropTypes.object,
 };
 
 export async function getStaticPaths() {
@@ -30,7 +31,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: false
+    fallback: false,
   };
 }
 
@@ -39,8 +40,8 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      postData
-    }
+      postData,
+    },
   };
 }
 

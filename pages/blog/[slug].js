@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Layout, Storyblok, Head } from '@app/components';
-import StoryblokService, { useStoryblok } from '@app/utils/storyblok-service';
+import { Layout, Storyblok, Head } from '@/components';
+import StoryblokService, { useStoryblok } from '@/utils/storyblok-service';
 import Container from '@material-ui/core/Container';
 
 function Post(props) {
@@ -27,7 +27,7 @@ export async function getServerSideProps({ params }) {
 }
 
 Post.propTypes = {
-  story: PropTypes.any
+  story: PropTypes.any,
 };
 
 export default Post;

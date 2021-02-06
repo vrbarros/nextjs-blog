@@ -2,7 +2,7 @@ import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 import createEmotionServer from '@emotion/server/create-instance';
-import { cache } from './_app.js';
+import { cache } from './_app';
 
 const { extractCritical } = createEmotionServer(cache);
 
@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
 
 // `getInitialProps` belongs to `_document` (instead of `_app`),
 // it's compatible with static-site generation (SSG).
-MyDocument.getInitialProps = async (ctx) => {
+MyDocument.getInitialProps = async ctx => {
   // Resolution order
   //
   // On the server:
@@ -59,7 +59,7 @@ MyDocument.getInitialProps = async (ctx) => {
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />)
+      enhanceApp: App => props => sheets.collect(<App {...props} />),
     });
 
   const initialProps = await Document.getInitialProps(ctx);
@@ -76,7 +76,7 @@ MyDocument.getInitialProps = async (ctx) => {
         data-emotion-css={styles.ids.join(' ')}
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: styles.css }}
-      />
-    ]
+      />,
+    ],
   };
 };

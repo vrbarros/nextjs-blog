@@ -15,7 +15,7 @@ function Head(props) {
 
 Head.propTypes = {
   title: PropTypes.string,
-  description: PropTypes.string
+  description: PropTypes.string,
 };
 
 export default Head;

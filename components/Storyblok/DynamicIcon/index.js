@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Twitter from './Twitter';
 
 const Components = {
-  twitter: Twitter
+  twitter: Twitter,
 };
 
 const DynamicIcon = ({ type }) => {
@@ -15,7 +15,7 @@ const DynamicIcon = ({ type }) => {
 };
 
 DynamicIcon.propTypes = {
-  type: PropTypes.any
+  type: PropTypes.any,
 };
 
 export default DynamicIcon;

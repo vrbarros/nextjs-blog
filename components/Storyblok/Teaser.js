@@ -5,17 +5,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1)
+    marginBottom: theme.spacing(1),
   },
   image: {
-    borderRadius: theme.shape.borderRadius * 5
-  }
+    borderRadius: theme.shape.borderRadius * 5,
+  },
 }));
 
-const Teaser = (props) => {
+const Teaser = props => {
   const { blok } = props;
 
   // Hooks
@@ -41,7 +41,7 @@ const Teaser = (props) => {
 };
 
 Teaser.propTypes = {
-  blok: PropTypes.object
+  blok: PropTypes.object,
 };
 
 export default Teaser;

@@ -1,7 +1,7 @@
-import { Layout, Link } from '@app/components';
+import { Layout, Link } from '@/components';
 import PropTypes from 'prop-types';
 import React from 'react';
-import StoryblokService, { useStoryblok } from '@app/utils/storyblok-service';
+import StoryblokService, { useStoryblok } from '@/utils/storyblok-service';
 import { useRouter } from 'next/router';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
@@ -22,11 +22,11 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(() => ({
   media: {
     height: 0,
-    paddingTop: '56.25%' // 16:9
+    paddingTop: '56.25%', // 16:9
   },
   actions: {
-    justifyContent: 'space-between'
-  }
+    justifyContent: 'space-between',
+  },
 }));
 
 function Blog(props) {
@@ -46,7 +46,8 @@ function Blog(props) {
           </Typography>
         </Box>
         <Grid container spacing={2}>
-          {posts.map((post) => (
+          {posts.map(post => (
+            // eslint-disable-next-line no-underscore-dangle
             <Grid item key={post._uid} md={4} sm={6} xs={12}>
               <Card>
                 <CardHeader
@@ -105,7 +106,7 @@ export async function getServerSideProps({ locale, defaultLocale }) {
 }
 
 Blog.propTypes = {
-  story: PropTypes.any
+  story: PropTypes.any,
 };
 
 export default Blog;

@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Theme } from '@app/containers';
+import { Theme } from '@/containers';
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import Head from 'next/head';
@@ -10,6 +10,8 @@ export const cache = createCache({ key: 'css' });
 
 function App(props) {
   const { Component, pageProps } = props;
+
+  const Layout = Component.Layout || Fragment;
 
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -28,7 +30,9 @@ function App(props) {
       <Theme>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </Theme>
     </CacheProvider>
   );
@@ -36,7 +40,7 @@ function App(props) {
 
 App.propTypes = {
   Component: PropTypes.elementType.isRequired,
-  pageProps: PropTypes.object.isRequired
+  pageProps: PropTypes.object.isRequired,
 };
 
 export default App;
