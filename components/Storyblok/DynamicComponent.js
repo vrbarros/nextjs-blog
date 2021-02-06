@@ -6,6 +6,7 @@ import Feature from '@/components/Storyblok/Feature';
 // eslint-disable-next-line import/no-cycle
 import Grid from '@/components/Storyblok/Grid';
 import FeaturedPosts from '@/components/Storyblok/FeaturedPosts';
+import MediumArticles from '@/components/Storyblok/MediumArticles';
 
 function DynamicComponent({ blok }) {
   const Components = {
@@ -13,6 +14,7 @@ function DynamicComponent({ blok }) {
     grid: Grid,
     feature: Feature,
     'featured-posts': FeaturedPosts,
+    'medium-articles': MediumArticles,
   };
 
   if (Components[blok.component]) {

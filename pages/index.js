@@ -22,15 +22,15 @@ function Home(props) {
   );
 }
 
-export async function getServerSideProps({ locale, defaultLocale }) {
+export async function getStaticProps({ locale, defaultLocale }) {
   const language = locale || defaultLocale;
   const insertLanguage = language !== defaultLocale ? `/${language}` : '';
 
-  const res = await StoryblokService.get(`cdn/stories${insertLanguage}/home`, {
+  const story = await StoryblokService.get(`cdn/stories${insertLanguage}/home`, {
     resolve_relations: 'featured-posts.posts',
   });
 
-  return { props: { story: res.data.story } };
+  return { props: { story: story.data.story } };
 }
 
 Home.propTypes = {
