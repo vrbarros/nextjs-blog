@@ -14,7 +14,7 @@ function rss2json(username) {
 }
 
 async function handler(req, res) {
-  const getRss2Json = await rss2json('@victorbarros_');
+  const getRss2Json = await rss2json('@vrbarros');
 
   const { data = {} } = getRss2Json;
   const { status, feed, items: posts } = data;

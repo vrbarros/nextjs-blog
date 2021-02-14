@@ -50,7 +50,7 @@ function MediumArticles({ blok }) {
           <Typography variant="body1" color="textSecondary" component="div">
             {posts.length} stories at{' '}
             <Link href={link} target="_blank">
-              @victorbarros_
+              @vrbarros
             </Link>
           </Typography>
         </Grid>
