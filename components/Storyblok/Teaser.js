@@ -7,8 +7,8 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(4),
+    marginTop: theme.spacing(4),
   },
   image: {
     borderRadius: theme.shape.borderRadius * 5,
@@ -23,19 +23,21 @@ const Teaser = props => {
 
   return (
     <SbEditable content={blok}>
-      <Grid container spacing={2} alignItems="center" className={classes.root}>
-        <Grid item lg={3} md={4} xs={12}>
-          {blok.image && (
-            <Image src={blok.image.filename} width={300} height={300} className={classes.image} />
-          )}
+      <div className={classes.root}>
+        <Grid container spacing={2} alignItems="center">
+          <Grid item lg={3} md={4} xs={12}>
+            {blok.image && (
+              <Image src={blok.image.filename} width={300} height={300} className={classes.image} />
+            )}
+          </Grid>
+          <Grid item lg={9} md={8} xs={12}>
+            <Typography variant="h2" gutterBottom>
+              {blok.headline}
+            </Typography>
+            <Typography variant="body1">{blok.description}</Typography>
+          </Grid>
         </Grid>
-        <Grid item lg={9} md={8} xs={12}>
-          <Typography variant="h2" gutterBottom>
-            {blok.headline}
-          </Typography>
-          <Typography variant="body1">{blok.description}</Typography>
-        </Grid>
-      </Grid>
+      </div>
     </SbEditable>
   );
 };

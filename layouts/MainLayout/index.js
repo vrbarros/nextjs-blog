@@ -4,12 +4,11 @@ import StoryblokService from '@/utils/storyblok-service';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
-    marginTop: theme.spacing(2),
   },
 }));
 

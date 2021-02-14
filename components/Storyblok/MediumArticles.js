@@ -56,7 +56,7 @@ function MediumArticles({ blok }) {
         </Grid>
         {posts.map(post => (
           <Grid item key={post.guid} lg={3} md={4} sm={6} xs={12}>
-            <Card>
+            <Card variant="outlined">
               <CardMedia className={classes.media} image={post.thumbnail} title={post.title} />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">

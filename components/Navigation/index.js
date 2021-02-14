@@ -1,14 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles';
 import { useRouter } from 'next/router';
 import AppBar from '@material-ui/core/AppBar';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import { useState } from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Image from 'next/image';
 
 import Link from '@/components/Link';
 
@@ -19,8 +18,6 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     marginRight: theme.spacing(2),
-    backgroundColor: `${theme.palette.background.default} !important`,
-    color: `${theme.palette.primary.main} !important`,
   },
   title: {
     flexGrow: 1,
@@ -63,13 +60,9 @@ function Navigation() {
       <AppBar position="fixed">
         <Toolbar>
           <Link href="/" locale={locale} underline="none">
-            <Avatar className={classes.avatar}>
-              <Icon>public</Icon>
-            </Avatar>
+            <Image className={classes.avatar} src="/logo-invert.png" width={40} height={40} />
           </Link>
-          <Typography variant="h6" className={classes.title}>
-            Victor Barros
-          </Typography>
+          <div className={classes.title}></div>
           <Button
             className={classes.button}
             startIcon={<Icon>home</Icon>}
@@ -79,16 +72,6 @@ function Navigation() {
             locale={locale}
             naked>
             Home
-          </Button>
-          <Button
-            className={classes.button}
-            startIcon={<Icon>book</Icon>}
-            color="inherit"
-            component={Link}
-            href="/blog"
-            locale={locale}
-            naked>
-            Blog
           </Button>
           <Button
             color="inherit"
