@@ -57,7 +57,7 @@ function Navigation() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="fixed" elevation={0}>
         <Toolbar>
           <Link href="/" locale={locale} underline="none">
             <Image className={classes.avatar} src="/logo-invert.png" width={40} height={40} />
