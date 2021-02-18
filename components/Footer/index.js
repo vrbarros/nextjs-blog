@@ -19,6 +19,7 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import BookIcon from '@material-ui/icons/Book';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import RedditIcon from '@material-ui/icons/Reddit';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 import { Link } from '@/components';
 
@@ -39,6 +40,7 @@ function Footer() {
     { title: 'Medium', Icon: BookIcon, href: '#' },
     { title: 'Twitter', Icon: TwitterIcon, href: '#' },
     { title: 'Reddit', Icon: RedditIcon, href: '#' },
+    { title: 'GitHub', Icon: GitHubIcon, href: '#' },
   ];
 
   const technology = [
