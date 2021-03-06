@@ -9,7 +9,7 @@ import MaterialUIProvider from '@/containers/MaterialUIProvider';
 
 export const cache = createCache({ key: 'css' });
 
-function App(props) {
+function MyApp(props) {
   const { Component, pageProps } = props;
 
   const Layout = Component.Layout || Fragment;
@@ -31,9 +31,9 @@ function App(props) {
   );
 }
 
-App.propTypes = {
+MyApp.propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.object.isRequired,
 };
 
-export default App;
+export default MyApp;

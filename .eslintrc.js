@@ -24,7 +24,7 @@ module.exports = {
     amd: true, // Enables require() and define() as global variables as per the amd spec.
     node: true, // Enables Node.js global variables and Node.js scoping.
   },
-  extends: ['airbnb', 'prettier', 'prettier/react', 'plugin:sonarjs/recommended'],
+  extends: ['airbnb', 'prettier', 'plugin:sonarjs/recommended'],
   parser: 'babel-eslint',
   plugins: [
     'simple-import-sort',

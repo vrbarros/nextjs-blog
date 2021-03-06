@@ -8,13 +8,12 @@
 - [ ] Payments
 - [ ] Localization
 - [ ] Design System
-- [ ] Monorepo
 
 ## Packages
 
 - [x] React@17
 - [x] Next.js@10
-- [ ] SWR
+- [x] SWR
 - [x] Material-UI
 - [ ] Storybook
 
@@ -30,6 +29,14 @@ yarn add @emotion/css @emotion/cache @emotion/server
 
 2. Expose `_document.js` and adjust `_app.js` to cache and handle with specific CSS
 3. Adjust usage of Next.js `Link`
+
+## Packages Maintenance
+
+It is important to keep all packages updated.
+
+```shell
+yarn upgrade-interactive
+```
 
 ## References
 

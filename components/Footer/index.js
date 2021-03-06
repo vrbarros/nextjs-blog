@@ -11,6 +11,7 @@ import {
   Button,
 } from '@material-ui/core';
 import Image from 'next/image';
+import { FormattedMessage } from 'react-intl';
 
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import FacebookIcon from '@material-ui/icons/Facebook';
@@ -86,13 +87,13 @@ function Footer() {
             </Grid>
             <Grid item md={2} sm={6} xs={12}>
               <Typography variant="overline" color="textSecondary">
-                Tecnologia
+                <FormattedMessage description="Footer header section" defaultMessage="Technology" />
               </Typography>
               {technology.map(renderLinks)}
             </Grid>
             <Grid item md={2} sm={6} xs={12}>
               <Typography variant="overline" color="textSecondary">
-                Educação
+                <FormattedMessage description="Footer header section" defaultMessage="Education" />
               </Typography>
               {education.map(renderLinks)}
             </Grid>
