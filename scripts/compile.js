@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 
 const shelljs = require('shelljs');
-const { i18n } = require('../next.config');
-
-const { locales } = i18n;
+const { locales } = require('./extract');
 
 shelljs.config.silent = true;
 

@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
 const shelljs = require('shelljs');
-const { i18n } = require('../next.config');
 
-const { locales } = i18n;
+const locales = ['en', 'pt-br'];
 
 shelljs.config.silent = true;
 
@@ -21,3 +20,5 @@ locales.forEach(lang => {
 
   shelljs.exec(command);
 });
+
+module.exports = { locales };
